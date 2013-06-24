@@ -1,0 +1,22 @@
+
+<% project.versions.sort.each do |v| %>
+  <h3>
+  <% if link_to_issues %>
+    <%= link_to(v.to_s, :controller => 'versions', :action => 'show', :id => v) %>
+  <% else %>
+    <%= v.to_s %>
+  <% end %>
+  <%if v.effective_date %>
+    <%= " (#{format_date(v.effective_date)})" %>
+  <% end %>
+  </h3>
+  <ul>
+    <% v.fixed_issues.each do |i| %>
+        <% if link_to_issues %>
+          <li><%= link_to_issue(i) %>
+        <% else %>
+          <li><%= i.subject %>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>
