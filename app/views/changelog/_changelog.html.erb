@@ -1,5 +1,5 @@
 
-<% project.versions.sort.each do |v| %>
+<% project.versions.sort.reverse.each do |v| %>
   <h3>
   <% if link_to_issues %>
     <%= link_to(v.to_s, :controller => 'versions', :action => 'show', :id => v) %>
