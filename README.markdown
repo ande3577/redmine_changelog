@@ -1,5 +1,7 @@
 # Redmine Changelog
 
+Tested on 2.3 and 2.4.
+
 Provides a wiki macro to generate a changelog for a project
 
 ![Changelog](img/redmine_changelog.png "Changelog")
