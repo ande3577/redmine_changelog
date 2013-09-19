@@ -1,5 +1,15 @@
 
-<% project.versions.sort.reverse.each do |v| %>
+<% project.versions.sort { |x, y|
+  # force versions without effective date to end of list
+  if !x.effective_date and y.effective_date
+    1
+  elsif !y.effective_date and x.effective_date
+    -1
+  else
+    # otherwise reverse to show newest revision first
+    y <=> x 
+  end 
+  }.each do |v| %>
   <h3>
   <% if link_to_issues %>
     <%= link_to(v.to_s, :controller => 'versions', :action => 'show', :id => v) %>
