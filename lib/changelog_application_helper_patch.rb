@@ -36,23 +36,19 @@ module ChangelogApplicationHelperPatch
       def changelog_version(v, link_to_issues) 
         html = ""
         html << "<h3>"
-          if link_to_issues
-            html << link_to(v.to_s, :controller => 'versions', :action => 'show', :id => v)
-          else
-            html << v.to_s
-          end
-          if v.effective_date
-            html << " (#{format_date(v.effective_date)})"
-          end
+        version_display_name = v.to_s
+        version_display_name << ": #{v.description}" if v.description and v.description.length > 0
+        if link_to_issues
+          html << link_to(version_display_name, :controller => 'versions', :action => 'show', :id => v)
+        else
+          html << version_display_name
+        end
+        html << " (#{format_date(v.effective_date)})" if v.effective_date 
         html << "</h3>"
         html << "<ul>"
-          v.fixed_issues.visible.each do |i|
-            if link_to_issues
-              html << "<li>#{link_to_issue(i)}</li>"
-            else
-              html << "<li>#{i.subject}</li>"
-            end
-          end
+        v.fixed_issues.visible.each do |i|
+          html << (link_to_issues ? "<li>#{link_to_issue(i)}</li>" : "<li>#{i.subject}</li>")
+        end
         html << "</ul>"
         html.html_safe
       end
