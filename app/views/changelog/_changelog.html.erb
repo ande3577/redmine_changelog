@@ -1,14 +1,1 @@
-
-<% project.versions.sort { |x, y|
-  # force versions without effective date to end of list
-  if !x.effective_date and y.effective_date
-    1
-  elsif !y.effective_date and x.effective_date
-    -1
-  else
-    # otherwise reverse to show newest revision first
-    y <=> x 
-  end 
-  }.each do |v| %>
-    <%= render :partial => 'changelog/changelog_version', :locals => {:project => project, :version => v, :link_to_issues => link_to_issues } %>
-<% end %>
+<%= changelog(project, link_to_issues, start_version_name, end_version_name) %>
