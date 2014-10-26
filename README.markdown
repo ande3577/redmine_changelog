@@ -21,6 +21,11 @@ revision.
 This generates a text based version of the roadmap that can be used for version
 documenation.
 
+{{changelog_version(version_name)}}: generates a changelog for a single version
+
+{{changelog_version(version,name, false)}}: do not include number/link in the listing
+for single option
+
 ## License
 
 This program is free software: you can redistribute it and/or modify 

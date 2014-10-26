@@ -22,7 +22,7 @@ module ChangelogApplicationHelperPatch
             if link_to_issues
               html << "<li>#{link_to_issue(i)}</li>"
             else
-              html << "<li><#{i.subject}</li>"
+              html << "<li>#{i.subject}</li>"
             end
           end
         html << "</ul>"

@@ -10,5 +10,5 @@
     y <=> x 
   end 
   }.each do |v| %>
-    <%= changelog_version(v, link_to_issues) %>
+    <%= render :partial => 'changelog/changelog_version', :locals => {:project => project, :version => v, :link_to_issues => link_to_issues } %>
 <% end %>
