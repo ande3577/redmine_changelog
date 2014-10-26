@@ -1,3 +1,5 @@
+require 'changelog_application_helper_patch'
+
 Redmine::Plugin.register :redmine_changelog do
   
   Redmine::WikiFormatting::Macros.macro :changelog, :desc => 'Wiki macro to generate a changelog
